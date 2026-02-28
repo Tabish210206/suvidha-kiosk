@@ -1,0 +1,592 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.975 0.002 270);
+  --foreground: oklch(0.15 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 260);
+  --primary: oklch(0.35 0.18 256);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.5 0.12 180);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.92 0.01 270);
+  --muted-foreground: oklch(0.5 0.02 260);
+  --accent: oklch(0.52 0.16 142);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.01 270);
+  --input: oklch(0.96 0.01 270);
+  --ring: oklch(0.35 0.18 256);
+  --chart-1: oklch(0.35 0.18 256);
+  --chart-2: oklch(0.52 0.16 142);
+  --chart-3: oklch(0.5 0.12 180);
+  --chart-4: oklch(0.6 0.08 30);
+  --chart-5: oklch(0.55 0.12 15);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.15 0.02 260);
+  --sidebar-primary: oklch(0.35 0.18 256);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.52 0.16 142);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.88 0.01 270);
+  --sidebar-ring: oklch(0.35 0.18 256);
+  
+  /* WCAG 2.1 AA Accessibility Colors (4.5:1 text, 7:1 buttons minimum) */
+  --wcag-text: #000000;
+  --wcag-background: #ffffff;
+  --wcag-button: #1a3a52;
+  --wcag-button-text: #ffffff;
+  --wcag-link: #0052cc;
+  --wcag-link-visited: #6f42c1;
+  --wcag-focus-color: #ffb81c;
+  
+  /* High Contrast Colors for Senior Citizens & Divyang Users */
+  --hc-text: #000000;
+  --hc-background: #ffffff;
+  --hc-border: #000000;
+  --hc-button-bg: #000000;
+  --hc-button-text: #ffffff;
+  --hc-success: #007c08;
+  --hc-error: #d13438;
+  --hc-warning: #ffaa44;
+}
+
+.dark {
+  --background: oklch(0.15 0.02 260);
+  --foreground: oklch(0.95 0.01 270);
+  --card: oklch(0.2 0.03 260);
+  --card-foreground: oklch(0.95 0.01 270);
+  --popover: oklch(0.2 0.03 260);
+  --popover-foreground: oklch(0.95 0.01 270);
+  --primary: oklch(0.65 0.18 256);
+  --primary-foreground: oklch(0.15 0.02 260);
+  --secondary: oklch(0.65 0.12 180);
+  --secondary-foreground: oklch(0.15 0.02 260);
+  --muted: oklch(0.35 0.03 260);
+  --muted-foreground: oklch(0.65 0.02 270);
+  --accent: oklch(0.72 0.16 142);
+  --accent-foreground: oklch(0.15 0.02 260);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.95 0.01 270);
+  --border: oklch(0.3 0.03 260);
+  --input: oklch(0.25 0.03 260);
+  --ring: oklch(0.65 0.18 256);
+  --chart-1: oklch(0.65 0.18 256);
+  --chart-2: oklch(0.72 0.16 142);
+  --chart-3: oklch(0.65 0.12 180);
+  --chart-4: oklch(0.75 0.08 30);
+  --chart-5: oklch(0.7 0.12 15);
+  --sidebar: oklch(0.18 0.02 260);
+  --sidebar-foreground: oklch(0.95 0.01 270);
+  --sidebar-primary: oklch(0.65 0.18 256);
+  --sidebar-primary-foreground: oklch(0.15 0.02 260);
+  --sidebar-accent: oklch(0.72 0.16 142);
+  --sidebar-accent-foreground: oklch(0.15 0.02 260);
+  --sidebar-border: oklch(0.3 0.03 260);
+  --sidebar-ring: oklch(0.65 0.18 256);
+}
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  /* Kiosk Base Styles - Optimized for 1080x1920 vertical portrait */
+  html {
+    ;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    ;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Kiosk Container */
+  .kiosk-container {
+    @apply w-screen h-screen flex flex-col;
+    background: linear-gradient(135deg, var(--background) 0%, var(--card) 100%);
+    ;
+  }
+  
+  /* Main Content Area */
+  .kiosk-main {
+    @apply flex-1 overflow-auto flex flex-col;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Service Tiles - Large Touch Targets */
+  .service-tile {
+    @apply rounded-lg border-2 border-primary shadow-lg;
+    @apply p-6 min-h-24 flex items-center justify-center;
+    @apply bg-card hover:bg-primary/10 transition-all;
+    @apply active:scale-95 cursor-pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 48px;
+    min-height: 60px;
+  }
+  
+  /* Large Buttons for Touch Interface */
+  .kiosk-btn {
+    @apply px-8 py-4 rounded-lg font-semibold text-lg;
+    @apply bg-primary text-primary-foreground;
+    @apply active:scale-95 transition-transform;
+    @apply min-h-14 min-w-32;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .kiosk-btn:hover {
+    @apply shadow-lg;
+  }
+  
+  .kiosk-btn:active {
+    @apply scale-95;
+  }
+  
+  .kiosk-btn-secondary {
+    @apply bg-secondary text-secondary-foreground;
+  }
+  
+  .kiosk-btn-outline {
+    @apply border-2 border-primary bg-transparent text-primary;
+  }
+  
+  /* Input Fields - Large Touch Targets */
+  .kiosk-input {
+    @apply w-full px-6 py-4 text-lg;
+    @apply border-2 border-input rounded-lg;
+    @apply bg-input text-foreground;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply appearance-none;
+    min-height: 56px;
+    font-size: 16px;
+  }
+  
+  .kiosk-input::placeholder {
+    @apply text-muted-foreground;
+  }
+  
+  /* Text Sizes for Better Readability */
+  .kiosk-h1 {
+    @apply text-4xl font-bold leading-tight tracking-tight;
+    @apply text-balance;
+  }
+  
+  .kiosk-h2 {
+    @apply text-3xl font-bold;
+    @apply text-balance;
+  }
+  
+  .kiosk-h3 {
+    @apply text-2xl font-semibold;
+  }
+  
+  .kiosk-body {
+    @apply text-lg leading-relaxed;
+  }
+  
+  .kiosk-caption {
+    @apply text-sm text-muted-foreground;
+  }
+  
+  /* High Contrast Mode */
+  .high-contrast {
+    --foreground: oklch(0 0 0);
+    --background: oklch(1 0 0);
+    --primary: oklch(0 0 0);
+    --primary-foreground: oklch(1 0 0);
+  }
+  
+  .high-contrast .border {
+    @apply border-foreground/80;
+  }
+  
+  /* Accessibility Bar */
+  .accessibility-bar {
+    @apply fixed bottom-0 left-0 right-0;
+    @apply h-20 bg-card border-t-2 border-primary;
+    @apply flex items-center justify-center gap-4;
+    @apply z-50;
+  }
+  
+  .accessibility-icon {
+    @apply w-12 h-12 rounded-lg;
+    @apply flex items-center justify-center;
+    @apply bg-primary text-primary-foreground;
+    @apply cursor-pointer active:scale-90;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Progress Indicator */
+  .progress-stepper {
+    @apply flex items-center justify-between mb-8;
+  }
+  
+  .progress-step {
+    @apply flex-1 flex flex-col items-center;
+  }
+  
+  .progress-circle {
+    @apply w-14 h-14 rounded-full;
+    @apply flex items-center justify-center;
+    @apply bg-muted text-muted-foreground font-bold text-lg;
+    @apply mb-2;
+  }
+  
+  .progress-circle.active {
+    @apply bg-primary text-primary-foreground;
+  }
+  
+  .progress-circle.completed {
+    @apply bg-accent text-accent-foreground;
+  }
+  
+  /* Floating Action Button */
+  .floating-btn {
+    @apply fixed bottom-24 right-6;
+    @apply w-16 h-16 rounded-full;
+    @apply flex items-center justify-center;
+    @apply bg-primary text-primary-foreground shadow-xl;
+    @apply active:scale-90 transition-transform;
+    @apply z-40;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Modal/Dialog */
+  .kiosk-modal {
+    @apply fixed inset-0 bg-foreground/50 backdrop-blur;
+    @apply flex items-center justify-center p-4;
+    @apply z-50;
+  }
+  
+  .kiosk-modal-content {
+    @apply bg-card rounded-2xl;
+    @apply max-w-md w-full;
+    @apply p-8 shadow-2xl;
+    @apply max-h-[80vh] overflow-auto;
+  }
+  
+  /* Alert/Notification */
+  .kiosk-alert {
+    @apply rounded-lg border-2 p-6 mb-4;
+    @apply text-lg;
+  }
+  
+  .alert-success {
+    @apply border-accent bg-accent/10 text-accent;
+  }
+  
+  .alert-error {
+    @apply border-destructive bg-destructive/10 text-destructive;
+  }
+  
+  .alert-warning {
+    @apply border-yellow-500 bg-yellow-500/10 text-yellow-700;
+  }
+  
+  .alert-info {
+    @apply border-secondary bg-secondary/10 text-secondary;
+  }
+  
+  /* Kiosk Card */
+  .kiosk-card {
+    @apply rounded-xl border-2 border-border;
+    @apply bg-card p-6 mb-4;
+    @apply shadow-md;
+  }
+  
+  /* Table Styling */
+  .kiosk-table {
+    @apply w-full border-collapse;
+  }
+  
+  .kiosk-table th {
+    @apply bg-primary text-primary-foreground;
+    @apply px-6 py-4 text-left text-lg font-semibold;
+    @apply border-b-2 border-primary;
+  }
+  
+  .kiosk-table td {
+    @apply px-6 py-4 text-lg;
+    @apply border-b border-border;
+  }
+  
+  .kiosk-table tr:hover {
+    @apply bg-primary/5;
+  }
+  
+  /* Loading Animation */
+  @keyframes kiosk-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  
+  .kiosk-loading {
+    animation: kiosk-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Spinner */
+  @keyframes kiosk-spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .kiosk-spinner {
+    animation: kiosk-spin 1s linear infinite;
+  }
+  
+  /* WCAG 2.1 AA Compliance Modes */
+  
+  /* Standard Mode - Normal contrast */
+  .wcag-standard {
+    color: var(--foreground);
+    background-color: var(--background);
+  }
+  
+  .wcag-standard .kiosk-btn {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border: 2px solid transparent;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* High Contrast Mode - 7:1 minimum button contrast */
+  .wcag-high-contrast {
+    --foreground: var(--hc-text);
+    --background: var(--hc-background);
+    --primary: var(--hc-button-bg);
+    --primary-foreground: var(--hc-button-text);
+    --border: var(--hc-border);
+  }
+  
+  .wcag-high-contrast .kiosk-btn {
+    background-color: var(--hc-button-bg);
+    color: var(--hc-button-text);
+    border: 3px solid var(--hc-border);
+    font-weight: 700;
+    font-size: 18px;
+  }
+  
+  .wcag-high-contrast .kiosk-input {
+    border: 3px solid var(--hc-border);
+    background-color: var(--hc-background);
+    color: var(--hc-text);
+  }
+  
+  .wcag-high-contrast .kiosk-card {
+    border: 3px solid var(--hc-border);
+    background-color: var(--hc-background);
+    color: var(--hc-text);
+  }
+  
+  /* Senior Citizen Mode - Extra large text, simplified layout */
+  .senior-citizen-mode {
+    --font-size-base: 26px;
+    --font-size-heading: 36px;
+  }
+  
+  .senior-citizen-mode .kiosk-body {
+    @apply text-3xl leading-relaxed;
+  }
+  
+  .senior-citizen-mode .kiosk-h1 {
+    @apply text-5xl font-bold;
+  }
+  
+  .senior-citizen-mode .kiosk-h2 {
+    @apply text-4xl font-bold;
+  }
+  
+  .senior-citizen-mode .kiosk-h3 {
+    @apply text-3xl font-semibold;
+  }
+  
+  .senior-citizen-mode .kiosk-btn {
+    @apply px-12 py-6 text-2xl min-h-20;
+    border-radius: 12px;
+  }
+  
+  .senior-citizen-mode .kiosk-input {
+    @apply py-6 text-2xl min-h-20;
+    border-radius: 12px;
+  }
+  
+  /* Divyang Mode - Audio-first, minimal touch */
+  .divyang-mode {
+    --touch-target-size: 80px;
+  }
+  
+  .divyang-mode .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    ;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  .divyang-mode .kiosk-btn {
+    @apply min-w-20 min-h-20;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .divyang-mode .kiosk-input {
+    @apply text-lg;
+    width: 100%;
+  }
+  
+  /* Focus Indicator - WCAG AAA compliant */
+  .wcag-focus:focus,
+  .kiosk-btn:focus,
+  .kiosk-input:focus {
+    outline: 3px solid var(--wcag-focus-color);
+    outline-offset: 2px;
+  }
+  
+  /* Text Size Adjustment (100% - 200%) */
+  .text-size-100 {
+    font-size: 100%;
+  }
+  
+  .text-size-125 {
+    font-size: 125%;
+  }
+  
+  .text-size-150 {
+    font-size: 150%;
+  }
+  
+  .text-size-175 {
+    font-size: 175%;
+  }
+  
+  .text-size-200 {
+    font-size: 200%;
+  }
+  
+  /* Touch Target Size Enforcement (64px minimum) */
+  .touch-target {
+    min-width: 64px;
+    min-height: 64px;
+  }
+  
+  /* Accessibility Bar at Bottom */
+  .kiosk-accessibility-bar {
+    @apply fixed bottom-0 left-0 right-0 z-50;
+    height: 80px;
+    background-color: var(--card);
+    border-top: 4px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .accessibility-button {
+    min-width: 64px;
+    min-height: 64px;
+    border-radius: 12px;
+    border: 2px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+  
+  .accessibility-button:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .accessibility-button:focus {
+    outline: 3px solid var(--wcag-focus-color);
+    outline-offset: 2px;
+  }
+  
+  /* Session Warning Modal */
+  .session-warning-modal {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .session-warning-content {
+    @apply bg-destructive text-destructive-foreground rounded-2xl p-8;
+    min-width: 400px;
+    text-align: center;
+  }
+  
+  .session-countdown {
+    @apply text-4xl font-bold my-6;
+  }
+}
